@@ -7,12 +7,12 @@ package Behaviour.tennis;
  **/
 public class Lose extends TennisState {
     public Lose() {
-        this.stateString = "lose";
+        this.stateString = "Lose";
     }
 
     @Override
     void winRound(GameContext context) {
-
+        System.out.format("Round-%d  %s %s! ", context.roundNum, context.getState().stateString, context.getState().stateString);
     }
 
     @Override

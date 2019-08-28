@@ -7,8 +7,9 @@ package Behaviour.tennis;
  **/
 public class LoveState extends TennisState {
     public LoveState() {
-        stateString = "love";
-        nextState = new FifteenState();
+        this.stateString = "love";
+        this.nextState = new FifteenState();
+        this.nextStateLose = null;
     }
 
     @Override
@@ -19,6 +20,13 @@ public class LoveState extends TennisState {
 
     @Override
     public void loseRound(GameContext context) {
+        if (context.getOpponentState() instanceof FortyState) {
+            context.setState(new Lose());
+            System.out.format("Round-%d  ------- GAME OVER! -------\n", context.roundNum);
+            System.out.format("      %s  home game %s.\n", context.getPlayerName(), context.getState().stateString);
+            System.out.format("------------------------------------\n");
+            return;
+        }
         context.setOpponentState(context.getOpponentState().nextState);
         System.out.format("Round-%d  %s : %s\n", context.roundNum, context.getState().stateString, context.getOpponentState().stateString);
     }

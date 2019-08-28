@@ -8,9 +8,14 @@ package Behaviour.tennis;
 public class AdvantageState extends TennisState {
     public AdvantageState() {
         this.stateString = "Ad";
-        this.nextStateWin = new Win();
-        this.nextStateLose = new DeuceState();
+//        this.nextStateWin = new Win();
+        this.nextStateLose = new DeuceState("Deuce");
     }
+
+    public AdvantageState(String stateString) {
+        this.stateString = stateString;
+    }
+
     @Override
     void winRound(GameContext context) {
 

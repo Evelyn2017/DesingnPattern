@@ -23,7 +23,10 @@ public class FifteenState extends TennisState {
     void loseRound(GameContext context) {
         if (context.getOpponentState() instanceof FortyState) {
             context.setState(new Lose());
-            System.out.format("Round-%d  %s\n", context.roundNum, context.getState().stateString);
+            System.out.format("Round-%d  ------- GAME OVER! -------\n", context.roundNum);
+            System.out.format("      %s  home game %s.\n", context.getPlayerName(), context.getState().stateString);
+            System.out.format("------------------------------------\n");
+            return;
         }
         else {
             context.setOpponentState(context.getOpponentState().nextState);

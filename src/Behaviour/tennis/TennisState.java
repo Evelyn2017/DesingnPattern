@@ -1,7 +1,5 @@
 package Behaviour.tennis;
 
-import Behaviour.State.Context;
-
 /**
  * @author evelyn
  * @description TODO
@@ -16,6 +14,7 @@ public abstract class TennisState {
     TennisState nextState;
     TennisState nextStateWin;
     TennisState nextStateLose;
+    TennisState nextStateLose2;
 
     abstract void winRound(GameContext context);
     abstract void loseRound(GameContext context);
