@@ -9,6 +9,7 @@ public class DeuceState extends TennisState {
     public DeuceState() {
         this.stateString = "Deuce";
         this.nextStateWin = new AdvantageState("Ad");
+        this.nextStateLose = new DisAdvantage("DisAd");
     }
 
     public DeuceState(String stateStr) {
@@ -17,11 +18,15 @@ public class DeuceState extends TennisState {
 
     @Override
     void winRound(GameContext context) {
-        System.out.println("Nothing in Deuce win");
+        context.setState(new AdvantageState());
+        context.setOpponentState(new DisAdvantage());
+        System.out.format("Round-%d  %s %s\n", context.roundNum, context.playerName, context.getState().stateString);
     }
 
     @Override
     void loseRound(GameContext context) {
-        System.out.println("Nothing in Deuce lose");
+        context.setState(new DisAdvantage());
+        context.setOpponentState(new AdvantageState());
+        System.out.format("Round-%d  %s %s\n", context.roundNum, context.playerName, context.getState().stateString);
     }
 }

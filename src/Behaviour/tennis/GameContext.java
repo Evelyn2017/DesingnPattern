@@ -6,14 +6,21 @@ package Behaviour.tennis;
  * @date 2019-08-28 14:29
  **/
 public class GameContext {
-    private TennisState state = new LoveState();
-    private TennisState opponentState = new LoveState();
+    private TennisState state;
+    private TennisState opponentState;
     int roundNum = 1;
 
     /*主场选手名字*/
-    String playerName = "player1";
+    String playerName;
     /*客场选手名字*/
-    String opponentName = "opponent";
+    String opponentName;
+
+    public GameContext(TennisState state, TennisState opponentState, String playerName, String opponentName) {
+        this.state = state;
+        this.opponentState = opponentState;
+        this.playerName = playerName;
+        this.opponentName = opponentName;
+    }
 
     public String getOpponentName() {
         return opponentName;
@@ -66,19 +73,22 @@ public class GameContext {
     }
 
     public static void main(String[] args) {
-        GameContext context1 = new GameContext();
-//        context1.loseRound();
+        String a1 = "evelyn";
+        String a2 = "iotto";
+        GameContext context1 = new GameContext(new DeuceState(), new DeuceState(), a1, a2);
+        context1.loseRound();
 //        context1.loseRound();
 //        context1.loseRound();
         context1.winRound();
         context1.winRound();
-        context1.winRound();
-        context1.loseRound();
-        context1.loseRound();
-        context1.loseRound();
 //        context1.winRound();
-//        context1.winRound();
+        context1.loseRound();
 //        context1.loseRound();
+//        context1.loseRound();
+        context1.winRound();
+        context1.winRound();
+//        context1.loseRound();
+        context1.winRound();
 //        context1.winRound();
 //        context1.winRound();
 //        context1.loseRound();
